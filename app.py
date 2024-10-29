@@ -5,7 +5,12 @@ from scipy.ndimage import gaussian_filter
 from PIL import Image, ImageEnhance
 from astropy.constants import G, c, M_sun
 from astropy import units as u
-from dashboard import display_banner, get_user_inputs
+from dashboard import set_font_style, display_banner, get_user_inputs
+
+# Apply font style
+set_font_style()
+
+# Rest of the code for visualization...
 
 # Display the banner and get user input from sliders
 display_banner()
