@@ -1,6 +1,19 @@
 import streamlit as st
 from datetime import datetime
 
+def set_font_style():
+    """Apply custom font style using CSS."""
+    st.markdown(
+        """
+        <style>
+        * {
+            font-family: 'Courier', monospace;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
 def display_banner():
     """Display the title, author banner, and date."""
     st.title("Enhanced Black Hole Visualization with Gravitational Lensing")
