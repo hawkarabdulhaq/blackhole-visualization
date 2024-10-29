@@ -5,21 +5,13 @@ from scipy.ndimage import gaussian_filter
 from PIL import Image, ImageEnhance
 from astropy.constants import G, c, M_sun
 from astropy import units as u
-from datetime import datetime
+from dashboard import display_banner, get_user_inputs
 
-# Display banner with authors and current date and time
-st.title("Enhanced Black Hole Visualization with Gravitational Lensing")
-st.subheader("This Simulation made by Jegr and Hawkar")
-st.write(f"Date & Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-st.write("Adjust the parameters to visualize the black hole lensing effect.")
+# Display the banner and get user input from sliders
+display_banner()
+black_hole_mass, grid_size, strength, blur_sigma = get_user_inputs()
 
-# User-adjustable parameters
-black_hole_mass = st.slider("Black Hole Mass (in Solar Masses)", min_value=1.0, max_value=10.0, value=4.0, step=0.5)
-grid_size = st.slider("Grid Size", min_value=500, max_value=1500, value=1000, step=100)
-strength = st.slider("Lensing Strength", min_value=0.5, max_value=3.0, value=1.5, step=0.1)
-blur_sigma = st.slider("Gaussian Blur Sigma", min_value=5, max_value=30, value=15, step=1)
-
-# Grid setup for visualization
+# Set up grid and parameters
 x = np.linspace(-10, 10, grid_size)
 y = np.linspace(-10, 10, grid_size)
 X, Y = np.meshgrid(x, y)
@@ -46,11 +38,10 @@ plt.ylabel("Y (scaled units)")
 plt.colorbar(label="Lensing Intensity")
 plt.gca().set_aspect('equal', adjustable='box')
 
-# Save the plot to a buffer and display
+# Save and display the image
 plt.savefig("output/blackhole_lensing_enhanced.png", dpi=300)
 plt.close()
 
-# Load and enhance the image for better contrast
 img = Image.open("output/blackhole_lensing_enhanced.png")
 img = ImageEnhance.Contrast(img).enhance(2)
 st.image(img, caption="Black Hole Visualization", use_column_width=True)
