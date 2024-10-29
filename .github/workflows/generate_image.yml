@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4  # Updated to latest version
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -31,7 +31,7 @@ jobs:
         python blackhole_visualization.py
 
     - name: Upload generated image
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4  # Updated to latest version
       with:
         name: blackhole_lensing_enhanced
         path: output/blackhole_lensing_enhanced.png
