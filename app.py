@@ -5,9 +5,12 @@ from scipy.ndimage import gaussian_filter
 from PIL import Image, ImageEnhance
 from astropy.constants import G, c, M_sun
 from astropy import units as u
+from datetime import datetime
 
-# Streamlit app settings
+# Display banner with authors and current date and time
 st.title("Enhanced Black Hole Visualization with Gravitational Lensing")
+st.subheader("This Simulation made by Jegr and Hawkar")
+st.write(f"Date & Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 st.write("Adjust the parameters to visualize the black hole lensing effect.")
 
 # User-adjustable parameters
