@@ -38,10 +38,9 @@ plt.ylabel("Y (scaled units)")
 plt.colorbar(label="Lensing Intensity")
 plt.gca().set_aspect('equal', adjustable='box')
 plt.savefig("output/blackhole_lensing_enhanced.png", dpi=300)
-plt.show()
+plt.close()  # Close the plot to save memory
 
 # Saving the image with enhanced contrast
 img = Image.fromarray(np.uint8(lensed_blur * 255))
 img = ImageEnhance.Contrast(img).enhance(2)
 img.save("output/blackhole_lensing_enhanced.png")
-img.show()
